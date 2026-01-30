@@ -1,26 +1,149 @@
 @import "tailwindcss";
 
+/* ============================================
+   Chameleon CSS Variables - Dynamic Theming
+   ============================================ */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Color Variables - Updated by AI */
+  --chameleon-bg: #fafafa;
+  --chameleon-text: #1a1a2e;
+  --chameleon-primary: #1a1a2e;
+  --chameleon-accent: #4a90d9;
+  
+  /* Typography Variables */
+  --chameleon-font: var(--font-sans);
+  --chameleon-base-size: 16px;
+  
+  /* Layout Variables */
+  --chameleon-radius: 0.5rem;
+  
+  /* Transition for smooth morphing */
+  --chameleon-transition: 300ms ease-in-out;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: var(--chameleon-bg);
+  --color-foreground: var(--chameleon-text);
+  --color-primary: var(--chameleon-primary);
+  --color-accent: var(--chameleon-accent);
+  
+  /* Font families from our safe list */
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+  --font-mono: var(--font-mono);
+  --font-display: var(--font-display);
+  --font-hand: var(--font-hand);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ============================================
+   Global Styles with Smooth Transitions
+   ============================================ */
+
+* {
+  transition: 
+    background-color var(--chameleon-transition),
+    color var(--chameleon-transition),
+    border-color var(--chameleon-transition),
+    border-radius var(--chameleon-transition);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--chameleon-bg);
+  color: var(--chameleon-text);
+  font-family: var(--chameleon-font);
+  font-size: var(--chameleon-base-size);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ============================================
+   Layout Mode Utilities
+   ============================================ */
+
+.layout-standard {
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.layout-dense {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.layout-hero {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  text-align: center;
+  font-size: 1.25rem;
+}
+
+/* ============================================
+   Typography Utilities
+   ============================================ */
+
+.font-dynamic {
+  font-family: var(--chameleon-font);
+}
+
+.text-primary {
+  color: var(--chameleon-primary);
+}
+
+.text-accent {
+  color: var(--chameleon-accent);
+}
+
+.bg-primary {
+  background-color: var(--chameleon-bg);
+}
+
+/* ============================================
+   Card and Container Styles
+   ============================================ */
+
+.morph-card {
+  background: var(--chameleon-bg);
+  border: 1px solid color-mix(in srgb, var(--chameleon-text) 10%, transparent);
+  border-radius: var(--chameleon-radius);
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.morph-button {
+  background: var(--chameleon-primary);
+  color: var(--chameleon-bg);
+  border: none;
+  border-radius: var(--chameleon-radius);
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.morph-button:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.morph-button:active {
+  transform: translateY(0);
+}
+
+/* ============================================
+   Loading States
+   ============================================ */
+
+.morphing {
+  animation: morph-pulse 1s ease-in-out infinite;
+}
+
+@keyframes morph-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
 }
