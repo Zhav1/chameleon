@@ -9,7 +9,8 @@ import {
     VibeInput,
     VibePresets,
     MorphText,
-    useChameleon
+    useChameleon,
+    ChameleonWidget
 } from '@/components/chameleon';
 import { DEFAULT_VIBE } from '@/lib/chameleon';
 
@@ -70,14 +71,21 @@ function DemoContent() {
     return (
         <MorphLayout className="p-4 md:p-8">
             <div className="max-w-4xl mx-auto space-y-8">
-                {/* Header */}
-                <header className="text-center space-y-4">
-                    <h1 className="text-4xl md:text-6xl font-bold">
-                        {getEmoji()} Chameleon {getEmoji()}
-                    </h1>
-                    <p className="text-xl opacity-80">
+                {/* Header with ChameleonWidget */}
+                <header className="space-y-4">
+                    {/* Navbar-style row with widget */}
+                    <div className="flex items-center justify-between">
+                        <div className="w-10" /> {/* Spacer */}
+                        <h1 className="text-4xl md:text-5xl font-bold text-center">
+                            {getEmoji()} Chameleon {getEmoji()}
+                        </h1>
+                        <ChameleonWidget position="navbar" />
+                    </div>
+
+                    <p className="text-xl opacity-80 text-center">
                         The Polymorphic Interface Engine
                     </p>
+
                     <div className="flex items-center justify-center gap-4 flex-wrap">
                         <span className="text-sm opacity-60">
                             Theme: <strong>{vibe.themeName}</strong>
