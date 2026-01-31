@@ -58,41 +58,41 @@ const STYLIST_PROMPT = `You are a CSS Variable Engine called "The Stylist". Your
 Return ONLY a valid JSON object matching the VibeSchema. No markdown, no explanation.`;
 
 export async function POST(request: NextRequest) {
-    try {
-        const { description } = await request.json();
+  try {
+    const { description } = await request.json();
 
-        if (!description || typeof description !== 'string') {
-            return NextResponse.json(
-                { error: 'Description is required' },
-                { status: 400 }
-            );
-        }
-
-        // Check if API key is configured
-        if (!process.env.GOOGLE_GENERATIVE_AI_API_KEY) {
-            console.warn('GOOGLE_GENERATIVE_AI_API_KEY not set, using default vibe');
-            return NextResponse.json(DEFAULT_VIBE);
-        }
-
-        const { object } = await generateObject({
-            model: google('gemini-1.5-flash'),
-            schema: VibeSchema,
-            system: STYLIST_PROMPT,
-            prompt: `Generate a theme for: "${description}"`,
-        });
-
-        return NextResponse.json(object);
-    } catch (error) {
-        console.error('Vibe generation error:', error);
-
-        // Return default vibe on any error
-        return NextResponse.json(DEFAULT_VIBE);
+    if (!description || typeof description !== 'string') {
+      return NextResponse.json(
+        { error: 'Description is required' },
+        { status: 400 }
+      );
     }
+
+    // Check if API key is configured
+    if (!process.env.GOOGLE_GENERATIVE_AI_API_KEY) {
+      console.warn('GOOGLE_GENERATIVE_AI_API_KEY not set, using default vibe');
+      return NextResponse.json(DEFAULT_VIBE);
+    }
+
+    const { object } = await generateObject({
+      model: google('gemini-3-flash-preview'),
+      schema: VibeSchema,
+      system: STYLIST_PROMPT,
+      prompt: `Generate a theme for: "${description}"`,
+    });
+
+    return NextResponse.json(object);
+  } catch (error) {
+    console.error('Vibe generation error:', error);
+
+    // Return default vibe on any error
+    return NextResponse.json(DEFAULT_VIBE);
+  }
 }
 
 export async function GET() {
-    return NextResponse.json({
-        message: 'POST to this endpoint with { description: "your vibe" }',
-        example: { description: "Make it look like a hacker movie" }
-    });
+  return NextResponse.json({
+    message: 'POST to this endpoint with { description: "your vibe" }',
+    example: { description: "Make it look like a hacker movie" }
+  });
 }

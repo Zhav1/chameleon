@@ -16,11 +16,20 @@ interface MorphLayoutProps {
 export function MorphLayout({ children, className = '' }: MorphLayoutProps) {
     const { vibe, isLoading } = useChameleon();
 
-    // Get the font CSS variable based on vibe selection
-    const fontVariable = `var(--font-${vibe.typography.fontFamily})`;
+    // Get the actual font family value from fontMap
+    const selectedFont = fontMap[vibe.typography.fontFamily];
+    const fontFamilyValue = selectedFont?.style?.fontFamily || 'system-ui, sans-serif';
 
     // Get layout class based on vibe
     const layoutClass = `layout-${vibe.layout.style}`;
+
+    // Debug log to track state updates
+    console.log('[MorphLayout] Vibe updated:', {
+        themeName: vibe.themeName,
+        backgroundColor: vibe.colors.background,
+        fontFamily: vibe.typography.fontFamily,
+        resolvedFont: fontFamilyValue
+    });
 
     return (
         <div
@@ -33,16 +42,16 @@ export function MorphLayout({ children, className = '' }: MorphLayoutProps) {
                 '--chameleon-accent': vibe.colors.accent,
 
                 // Typography variables
-                '--chameleon-font': fontVariable,
+                '--chameleon-font': fontFamilyValue,
                 '--chameleon-base-size': vibe.typography.baseSize,
 
                 // Layout variables
                 '--chameleon-radius': vibe.layout.borderRadius,
 
-                // Apply the theme immediately
+                // Apply the theme immediately with ACTUAL values
                 backgroundColor: vibe.colors.background,
                 color: vibe.colors.text,
-                fontFamily: fontVariable,
+                fontFamily: fontFamilyValue,
                 fontSize: vibe.typography.baseSize,
                 borderRadius: vibe.layout.borderRadius,
                 minHeight: '100vh',

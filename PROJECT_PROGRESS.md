@@ -53,8 +53,8 @@ npm run dev
 
 | Route | Model | Purpose |
 | --- | --- | --- |
-| `/api/vibe` | Gemini 1.5 Flash | Generate CSS theme |
-| `/api/rewrite` | Gemini 1.5 Pro | Rewrite content |
+| `/api/vibe` | Gemini 3 Flash Preview | Generate CSS theme |
+| `/api/rewrite` | Gemini 3 Pro Preview | Rewrite content |
 
 ---
 

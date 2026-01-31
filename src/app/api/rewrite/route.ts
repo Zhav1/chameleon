@@ -77,7 +77,7 @@ ${text}
 Rewrite the above text following the specified tone and emoji rules.`;
 
         const result = streamText({
-            model: google('gemini-1.5-pro'),
+            model: google('gemini-3-pro-preview'),
             system: EDITOR_PROMPT,
             prompt,
         });
