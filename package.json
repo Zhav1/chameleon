@@ -1,20 +1,60 @@
 {
-  "name": "chameleon-temp",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@chameleon-sdk/react",
+  "version": "2.0.0",
+  "description": "The Polymorphic Interface Engine - AI-powered dynamic theming and content adaptation",
+  "author": "Chameleon Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Zhav1/chameleon.git"
+  },
+  "keywords": [
+    "react",
+    "nextjs",
+    "ai",
+    "theming",
+    "gemini",
+    "dynamic-ui",
+    "accessibility",
+    "content-adaptation"
+  ],
+  "main": "./src/lib/chameleon/index.ts",
+  "types": "./src/lib/chameleon/index.ts",
+  "exports": {
+    ".": {
+      "types": "./src/lib/chameleon/index.ts",
+      "import": "./src/lib/chameleon/index.ts",
+      "require": "./src/lib/chameleon/index.ts"
+    },
+    "./components": {
+      "types": "./src/components/chameleon/index.ts",
+      "import": "./src/components/chameleon/index.ts"
+    }
+  },
+  "files": [
+    "src/lib/chameleon",
+    "src/components/chameleon",
+    "README.md"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
   },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0",
+    "next": "^14.0.0 || ^15.0.0 || ^16.0.0",
+    "@ai-sdk/google": "^3.0.0",
+    "ai": "^6.0.0",
+    "nuqs": "^2.0.0",
+    "zod": "^4.0.0"
+  },
   "dependencies": {
     "@ai-sdk/google": "^3.0.18",
     "ai": "^6.0.62",
-    "next": "16.1.6",
     "nuqs": "^2.8.6",
-    "react": "19.2.3",
-    "react-dom": "19.2.3",
     "zod": "^4.3.6"
   },
   "devDependencies": {
@@ -24,7 +64,11 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
+    "next": "16.1.6",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
     "tailwindcss": "^4",
+    "tsup": "^8.0.0",
     "typescript": "^5"
   }
 }

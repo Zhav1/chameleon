@@ -17,7 +17,7 @@
 | 6 | **Visible AI Thinking** | ✅ Complete |
 | 7 | **Screenshot-to-Vibe** | ✅ Complete |
 | 8 | **Voice Input** | ✅ Complete |
-| 9 | **SDK Distribution** | ⏳ Pending |
+| 9 | **SDK Distribution** | ✅ Complete |
 
 ---
 
