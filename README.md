@@ -1,6 +1,7 @@
 # 🦎 Chameleon SDK
 
 > **The Polymorphic Interface Engine** - AI-powered dynamic theming and content adaptation
+> Chameleon is a React SDK that turns static interfaces into fluid, adaptive experiences. It doesn't just toggle dark mode; it uses Multimodal AI (Gemini) to reshape your application's customized CSS, typography, and even text complexity in real-time. Most UIs are rigid. Chameleon allows your app to "read the room"—adapting to a user who wants a "cozy, simple explanation" or a "cyberpunk, high-density data stream" with <400ms perceived latency.
 
 [![npm version](https://img.shields.io/npm/v/@chameleon-sdk/react.svg)](https://www.npmjs.com/package/@chameleon-sdk/react)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
